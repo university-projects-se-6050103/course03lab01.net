@@ -2,4 +2,4 @@
 
 ## Task
 
-![task](task.jpg)
+![task](/lab-01/task.jpg)
