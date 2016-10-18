@@ -72,7 +72,7 @@ namespace lab_01
 
             if (parseResult)
             {
-                if (choiceInt < 0 || choiceInt > lectorsSize)
+                if (choiceInt <= 0 || choiceInt > lectorsSize)
                 {
                     Console.WriteLine("Chosen number is invalid. Please try again");
                     return GetLectorChoise(lectorsSize);
