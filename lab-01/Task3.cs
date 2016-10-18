@@ -61,7 +61,17 @@ namespace lab_01
         private static int GetLectorChoise()
         {
             Console.WriteLine("Choose a lector");
-            return int.Parse(Console.ReadLine());
+            var choiceString = Console.ReadLine();
+            int choiceInt;
+            var parseResult = int.TryParse(choiceString, out choiceInt);
+
+            if (parseResult)
+            {
+                return choiceInt;
+            }
+
+            Console.WriteLine("Invalid input. Please try again");
+            return GetLectorChoise();
         }
 
         private static async Task<string> GetIp()
