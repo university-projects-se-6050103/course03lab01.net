@@ -24,6 +24,9 @@ namespace lab_01
                 I realized that next time tasks from you will be more complicated, hope I'll cope with them.
                 "
             );
+
+            // Preserve exit
+            Console.ReadKey();
         }
 
         private static List<Tuple<string, string>> ReadLectors()
