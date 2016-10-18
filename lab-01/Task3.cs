@@ -67,9 +67,9 @@ namespace lab_01
 
             if (parseResult)
             {
-                if (choiceInt >= lectorsSize)
+                if (choiceInt < 0 || choiceInt >= lectorsSize)
                 {
-                    Console.WriteLine("Chosen number is bigger than list of lectors");
+                    Console.WriteLine("Chosen number is invalid. Please try again");
                     return GetLectorChoise(lectorsSize);
                 }
 
