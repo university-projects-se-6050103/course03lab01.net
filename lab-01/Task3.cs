@@ -12,7 +12,7 @@ namespace lab_01
         {
             var lectors = ReadLectors();
             PrintLectorsList(lectors);
-            var chosenLector = lectors[GetLectorChoise(lectors.Count)];
+            var chosenLector = lectors[GetLectorChoise(lectors.Count) - 1];
 
             Console.WriteLine(
                 $@"
@@ -40,8 +40,13 @@ namespace lab_01
                     continue;
                 }
 
-                var lector = line.Split('-')[0].Trim();
-                var subject = line.Split('-')[1].Trim();
+                var lector = line.Split('-')?[0].Trim();
+                var subject = line.Split('-')?[1].Trim();
+
+                if (string.IsNullOrEmpty(lector) || string.IsNullOrEmpty(subject))
+                {
+                    continue;
+                }
 
                 lectors.Add(Tuple.Create(lector, subject));
             }
@@ -67,7 +72,7 @@ namespace lab_01
 
             if (parseResult)
             {
-                if (choiceInt < 0 || choiceInt >= lectorsSize)
+                if (choiceInt < 0 || choiceInt > lectorsSize)
                 {
                     Console.WriteLine("Chosen number is invalid. Please try again");
                     return GetLectorChoise(lectorsSize);
