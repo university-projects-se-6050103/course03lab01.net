@@ -12,7 +12,7 @@ namespace lab_01
         {
             var lectors = ReadLectors();
             PrintLectorsList(lectors);
-            var chosenLector = lectors[GetLectorChoise()];
+            var chosenLector = lectors[GetLectorChoise(lectors.Count)];
 
             Console.WriteLine(
                 $@"
@@ -58,7 +58,7 @@ namespace lab_01
             lectors.ForEach(lector => { Console.WriteLine($"{++lectorIndex} {lector.Item1} - {lector.Item2}"); });
         }
 
-        private static int GetLectorChoise()
+        private static int GetLectorChoise(int lectorsSize)
         {
             Console.WriteLine("Choose a lector");
             var choiceString = Console.ReadLine();
@@ -67,11 +67,17 @@ namespace lab_01
 
             if (parseResult)
             {
+                if (choiceInt >= lectorsSize)
+                {
+                    Console.WriteLine("Chosen number is bigger than list of lectors");
+                    return GetLectorChoise(lectorsSize);
+                }
+
                 return choiceInt;
             }
 
             Console.WriteLine("Invalid input. Please try again");
-            return GetLectorChoise();
+            return GetLectorChoise(lectorsSize);
         }
 
         private static async Task<string> GetIp()
